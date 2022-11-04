@@ -3,7 +3,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 const ArticlesReusable = ({ articles }) => {
   return (
-    <div>
+    <>
       {articles.map((article, index) => {
         return (
           <div className="p-4 md:w-1/2" key={index}>
@@ -37,7 +37,7 @@ const ArticlesReusable = ({ articles }) => {
           </div>
         );
       })}
-    </div>
+    </>
   );
 };
 

@@ -1,12 +1,14 @@
 import React from "react";
 import articles from "./ArticleContent";
+import ArticlesReusable from "../ArticlesReusable";
 import { useParams } from "react-router-dom";
 const Article = () => {
   const { name } = useParams();
   const article = articles.find((article) => article.name === name);
   if (!article) return <h1>Article does not exist</h1>;
+  const otherArticles = articles.filter((article) => article.name !== name);
   return (
-    <div>
+    <>
       <h1 className="sm:text-4xl text-2xl font-bold my-6 text-gray-900">
         {article.title}
       </h1>
@@ -17,8 +19,13 @@ const Article = () => {
           </p>
         );
       })}
-      ;
-    </div>
+      <h1 className="sm:text-2xl text-xl font-bold my-4 text-gray-900">
+        Other Articles
+      </h1>
+      <div className="flex flex-wrap -m-4">
+        <ArticlesReusable articles={otherArticles} />
+      </div>
+    </>
   );
 };
 

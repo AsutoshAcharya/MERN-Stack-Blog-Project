@@ -4,11 +4,11 @@ import Home from "./components/pages/Home";
 import About from "./components/pages/About";
 import ArticleList from "./components/pages/ArticleList";
 import Article from "./components/pages/Article";
-import Navbar from './components/Navbar/Navbar';
+import Navbar from "./components/Navbar/Navbar";
 function App() {
   return (
     <Router>
-    <Navbar />
+      <Navbar />
       <div className="max-w-screen-md mx-auto pt-20">
         <Routes>
           <Route path="/" element={<Home />} />
