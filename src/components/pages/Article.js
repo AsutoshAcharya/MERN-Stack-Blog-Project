@@ -4,6 +4,7 @@ import ArticlesReusable from "../ArticlesReusable";
 import { useParams } from "react-router-dom";
 import NotFound from "./NotFound";
 import CommentsList from "../CommentsList";
+import AddCommentForm from "../AddCommentForm";
 const Article = () => {
   const [articleInfo, setArticleInfo] = useState({ comments: [] });
   const { name } = useParams();
@@ -34,6 +35,7 @@ const Article = () => {
         );
       })}
       <CommentsList comments={articleInfo.comments} />
+      <AddCommentForm articleName={name} setArticleInfo={setArticleInfo} />
       <h1 className="sm:text-2xl text-xl font-bold my-4 text-gray-900">
         Other Articles
       </h1>
