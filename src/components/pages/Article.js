@@ -1,12 +1,25 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import articles from "./ArticleContent";
 import ArticlesReusable from "../ArticlesReusable";
 import { useParams } from "react-router-dom";
 import NotFound from "./NotFound";
+import CommentsList from "../CommentsList";
 const Article = () => {
+  const [articleInfo, setArticleInfo] = useState({ comments: [] });
   const { name } = useParams();
   const article = articles.find((article) => article.name === name);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await fetch(`/api/articles/${name}`);
+      const body = await result.json();
+      console.log(body);
+      setArticleInfo(body);
+    };
+    fetchData();
+  }, [name]);
   if (!article) return <NotFound />;
+
   const otherArticles = articles.filter((article) => article.name !== name);
   return (
     <>
@@ -20,6 +33,7 @@ const Article = () => {
           </p>
         );
       })}
+      <CommentsList comments={articleInfo.comments} />
       <h1 className="sm:text-2xl text-xl font-bold my-4 text-gray-900">
         Other Articles
       </h1>
