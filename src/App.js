@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./components/pages/Home";
-
+import NotFound from "./components/pages/NotFound";
 import About from "./components/pages/About";
 import ArticleList from "./components/pages/ArticleList";
 import Article from "./components/pages/Article";
@@ -15,6 +15,7 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/articles-list" element={<ArticleList />} />
           <Route path="/article/:name" element={<Article />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </div>
     </Router>

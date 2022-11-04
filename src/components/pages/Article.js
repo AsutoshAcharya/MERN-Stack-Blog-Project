@@ -2,10 +2,11 @@ import React from "react";
 import articles from "./ArticleContent";
 import ArticlesReusable from "../ArticlesReusable";
 import { useParams } from "react-router-dom";
+import NotFound from "./NotFound";
 const Article = () => {
   const { name } = useParams();
   const article = articles.find((article) => article.name === name);
-  if (!article) return <h1>Article does not exist</h1>;
+  if (!article) return <NotFound />;
   const otherArticles = articles.filter((article) => article.name !== name);
   return (
     <>
